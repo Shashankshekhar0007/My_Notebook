@@ -3,10 +3,10 @@ import noteContext from "../context/notes/noteContext";
 const Addnote = () => {
   const context = useContext(noteContext);
   const { addnote } = context;
-  const [note, setNote] = useState({ title: "", description: "", tag: "default" });
+  const [note, setNote] = useState({ title: "", description: "", tags: "" });
   const handleClick = (e) => {
     e.preventDefault();
-    addnote(note.title, note.description, note.tag);
+    addnote(note.title, note.description, note.tags);
   }
   const onChange = (e) => {
     setNote({ ...note, [e.target.name]: e.target.value });
@@ -20,14 +20,14 @@ const Addnote = () => {
           <input type="text" className="form-control" id="title" name="title" aria-describedby="emailHelp" onChange={onChange}></input>
         </div>
         <div className="mb-3">
-          <label htmlFor="description" className="form-label">Description</label>
+          <label htmlFor="description" className="form-label"><h3>Description</h3></label>
           <input type="text" className="form-control" id="description" name="description" onChange={onChange}></input>
         </div>
-        <div className="mb-3 form-check">
-          <input type="checkbox" className="form-check-input" id="exampleCheck1"></input>
-          <label className="form-check-label" htmlFor="exampleCheck1">Check me out</label>
+        <div className="mb-3">
+          <label htmlFor="tags" className="form-label"><h3>Tag</h3></label>
+          <input type="text" className="form-control" id="tags" name="tags" onChange={onChange}></input>
         </div>
-        <button type="submit" className="btn btn-primary" onClick={handleClick}>Submit</button>
+        <button type="submit" className="btn btn-primary" onClick={handleClick}>Add Note</button>
       </form>
     </div>
   </div>;
